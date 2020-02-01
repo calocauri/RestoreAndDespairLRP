@@ -39,15 +39,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collision collision) {
-        var temp = collision.gameObject.GetComponent<BreakablePropController>();
+    void OnTriggerEnter(Collider collider) {
+        var temp = collider.gameObject.GetComponent<BreakablePropController>();
         if(temp) {
             Debug.Log("OnTriggerEnter");
             collidingProp = temp;
         }
     }
-     void OnTriggerExit(Collision collision){
-        var temp = collision.gameObject.GetComponent<BreakablePropController>();
+     void OnTriggerExit(Collider collider){
+        var temp = collider.gameObject.GetComponent<BreakablePropController>();
         if(temp && temp == collidingProp) {
             Debug.Log("OnTriggerExit");
             collidingProp = null;

@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
             transform.localPosition += transform.forward * Mathf.Lerp(previous, axis.sqrMagnitude, 0.5f) * moveSpeed;
             previous = axis.sqrMagnitude;
-            if(Input.GetButton(interact)) Debug.Log(interact);
+            // if(Input.GetButton(interact)) Debug.Log(interact);
             if(collidingProp && Input.GetButton(interact)) collidingProp.HandleInteraction(arma.damageType);
         }
     }

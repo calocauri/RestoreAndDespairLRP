@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public InteractionType damageType;
+    public InteractionType damageType = InteractionType.Cut;
 
 }

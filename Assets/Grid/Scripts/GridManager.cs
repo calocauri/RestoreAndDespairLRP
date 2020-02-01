@@ -16,12 +16,12 @@ public class GridManager : Singleton<GridManager> {
         base.Awake();
         InitializeGrid();
     }
-    [ContextMenu("Initialize Grid")]
+
     private void InitializeGrid() {
         grid = new Dictionary<Vector2Int, bool>();
 
-        for (var x=0; x<width; x++) {
-            for (var y=0; y<height; y++) {
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y++) {
                 var pos = new Vector2Int(x, y);
                 grid[pos] = false;
                 InstantiateFloorTile(pos);
@@ -68,8 +68,8 @@ public class GridManager : Singleton<GridManager> {
                 continue;
             }
 
-            for (var x=trypos.x; x<trypos.x + size.x; x++) {
-                for (var y=trypos.y; y<trypos.y + size.y; y++) {
+            for (var x = trypos.x; x < trypos.x + size.x; x++) {
+                for (var y = trypos.y; y < trypos.y + size.y; y++) {
                     var relativePos = new Vector2Int(x, y);
                     if (grid.ContainsKey(relativePos)) {
                         if (grid[relativePos] == true) {
@@ -79,12 +79,13 @@ public class GridManager : Singleton<GridManager> {
                 }
             }
 
-            pos = new Vector2Int {
+            pos = new Vector2Int
+            {
                 x = trypos.x - (width / 2),
                 y = trypos.y - (width / 2)
             };
-            for (var x=trypos.x; x<trypos.x + size.x; x++) {
-                for (var y=trypos.y; y<trypos.y + size.y; y++) {
+            for (var x = trypos.x; x < trypos.x + size.x; x++) {
+                for (var y = trypos.y; y < trypos.y + size.y; y++) {
                     grid[new Vector2Int(x, y)] = true;
                 }
             }
@@ -93,6 +94,14 @@ public class GridManager : Singleton<GridManager> {
 
         pos = new Vector2Int();
         return false;
+    }
+
+    public void Reset() {
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y++) {
+                grid[new Vector2Int(x, y)] = false;
+            }
+        }
     }
 
 }

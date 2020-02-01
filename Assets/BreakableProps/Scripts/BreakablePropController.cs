@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakablePropController : MonoBehaviour, IInteractable {
+public class BreakablePropController : PoolableObject, IInteractable {
 
     [SerializeField]
     private Vector2Int size;
@@ -25,11 +25,15 @@ public class BreakablePropController : MonoBehaviour, IInteractable {
     //         // return size.x * size.y;
     //     }
     // }
+    private new Rigidbody rigidbody;
+    // private new Collider collider;
 
     public PropState State { get; private set; }
     public int Health { get; private set; }
 
     private void Awake() {
+        rigidbody = GetComponent<Rigidbody>();
+
         InitialHealth = Random.Range(1, 10);
         Init();
 
@@ -120,12 +124,12 @@ public class BreakablePropController : MonoBehaviour, IInteractable {
                 piece.transform.localPosition = Vector3.Lerp(
                     initialPositions[i],
                     Vector3.zero,
-                    t
+                    AnimationCurveManager.Shared.RestoreCurve.Evaluate(t)
                 );
                 piece.transform.localEulerAngles = Vector3.Lerp(
                     initialRotations[i],
                     Vector3.zero,
-                    t
+                    AnimationCurveManager.Shared.RestoreRotationCurve.Evaluate(t)
                 );
             }
 
@@ -145,11 +149,13 @@ public class BreakablePropController : MonoBehaviour, IInteractable {
 
     private void HandleDeath() {
         // TODO: disable interaction
+        // rigidbody.isKinematic = true;
         DestroyProp();
     }
 
     private void HandleFix() {
         // TODO: enable interaction
+        // rigidbody.isKinematic = false;
         RepairProp();
     }
 
@@ -158,18 +164,37 @@ public class BreakablePropController : MonoBehaviour, IInteractable {
             return;
         }
 
+        if (interactionType == InteractionType.Heal && State != PropState.Fixed && State != PropState.Fixing) {
+            FXSpawner.Shared.StartInteractionFX(InteractionType.Heal, transform);
+        }
+        else if (interactionType != InteractionType.Heal) {
+            FXSpawner.Shared.StartMaterialFX(materialType, transform);
+        }
+
         var startingHealth = Health;
         var damage = InteractionHandler.CalculateInteractionResult(materialType, interactionType);
         Health += damage;
-        print($"{name} : {startingHealth} + {damage} = {Health}");
 
         Health = Mathf.Clamp(Health, 0, InitialHealth);
 
-        if (Health == 0) {
+        if (Health <= 0 && State != PropState.Destroyed) {
             HandleDeath();
         }
-        else if (Health == InitialHealth) {
+        else if (Health >= InitialHealth && State != PropState.Fixed && State != PropState.Fixing) {
             HandleFix();
         }
     }
+
+    public override void OnGetFromPool() {
+
+    }
+
+    public override void OnReturnToPool() {
+
+    }
+
+    public override void OnCreatedFromPool(GenericObjectPool pool) {
+        base.OnCreatedFromPool(pool);
+    }
+
 }

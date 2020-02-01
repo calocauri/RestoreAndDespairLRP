@@ -1,27 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour {
-    
-    public static GridManager Shared { get; private set; }
+public class GridManager : Singleton<GridManager> {
 
     [SerializeField]
     private GameObject FloorTilePrefab;
 
-    private int maxAttempts = 16;
+    private int maxAttempts = 3;
     private int width = 16;
     private int height = 16;
+    [SerializeField]
     private Dictionary<Vector2Int, bool> grid;
 
-    private void Awake() {
-        if (Shared == null) {
-            Shared = this;
-            DontDestroyOnLoad(this);
-        }
-
+    protected override void Awake() {
+        base.Awake();
         InitializeGrid();
     }
-
+    [ContextMenu("Initialize Grid")]
     private void InitializeGrid() {
         grid = new Dictionary<Vector2Int, bool>();
 

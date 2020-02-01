@@ -7,9 +7,12 @@ public class FXSpawner : Singleton<FXSpawner> {
     [SerializeField]
     private MaterialTypeFX[] materialsFX;
     [SerializeField]
+    private MaterialTypeFX[] materialsDeathFX;
+    [SerializeField]
     private InteractionTypeFX[] interactionFX;
 
     Dictionary<MaterialType, GenericObjectPool> materialFXPools = new Dictionary<MaterialType, GenericObjectPool>();
+    Dictionary<MaterialType, GenericObjectPool> materialDeathFXPools = new Dictionary<MaterialType, GenericObjectPool>();
     Dictionary<InteractionType, GenericObjectPool> interactionFXPools = new Dictionary<InteractionType, GenericObjectPool>();
 
     protected override void Awake() {
@@ -20,6 +23,11 @@ public class FXSpawner : Singleton<FXSpawner> {
             newMaterialFXPool.Init(materialFX.particleSystem);
             materialFXPools[materialFX.type] = newMaterialFXPool;
         }
+        foreach (var materialDeathFX in materialsDeathFX) {
+            var newMaterialFXPool = new GenericObjectPool();
+            newMaterialFXPool.Init(materialDeathFX.particleSystem);
+            materialDeathFXPools[materialDeathFX.type] = newMaterialFXPool;
+        }
         foreach (var intertFX in interactionFX) {
             var newMaterialFXPool = new GenericObjectPool();
             newMaterialFXPool.Init(intertFX.particleSystem);
@@ -28,6 +36,13 @@ public class FXSpawner : Singleton<FXSpawner> {
     }
 
     public void StartMaterialFX(MaterialType materialType, Transform target) {
+        var pooledObject = materialDeathFXPools[materialType].Get();
+        var pooledParticleSystem = (PoolableParticleSystem)pooledObject;
+        pooledParticleSystem.ParticleSystem.Play();
+        pooledParticleSystem.transform.position = target.position;
+    }
+
+    public void StartDeathFX(MaterialType materialType, Transform target) {
         var pooledObject = materialFXPools[materialType].Get();
         var pooledParticleSystem = (PoolableParticleSystem)pooledObject;
         pooledParticleSystem.ParticleSystem.Play();

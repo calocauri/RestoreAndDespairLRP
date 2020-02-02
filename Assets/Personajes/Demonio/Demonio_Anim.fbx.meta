@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: b2755306767c1084aa5f27ced1615699
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_FireHead_Geo
+    100004: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Geo
+    100006: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Teeth_Geo
+    100008: DemonioAnimacion:DemonioRig:joint1
+    100010: DemonioAnimacion:DemonioRig:joint10
+    100012: DemonioAnimacion:DemonioRig:joint11
+    100014: DemonioAnimacion:DemonioRig:joint12
+    100016: DemonioAnimacion:DemonioRig:joint13
+    100018: DemonioAnimacion:DemonioRig:joint14
+    100020: DemonioAnimacion:DemonioRig:joint15
+    100022: DemonioAnimacion:DemonioRig:joint2
+    100024: DemonioAnimacion:DemonioRig:joint20
+    100026: DemonioAnimacion:DemonioRig:joint21
+    100028: DemonioAnimacion:DemonioRig:joint22
+    100030: DemonioAnimacion:DemonioRig:joint23
+    100032: DemonioAnimacion:DemonioRig:joint24
+    100034: DemonioAnimacion:DemonioRig:joint25
+    100036: DemonioAnimacion:DemonioRig:joint26
+    100038: DemonioAnimacion:DemonioRig:joint27
+    100040: DemonioAnimacion:DemonioRig:joint28
+    100042: DemonioAnimacion:DemonioRig:joint29
+    100044: DemonioAnimacion:DemonioRig:joint3
+    100046: DemonioAnimacion:DemonioRig:joint30
+    100048: DemonioAnimacion:DemonioRig:joint31
+    100050: DemonioAnimacion:DemonioRig:joint32
+    100052: DemonioAnimacion:DemonioRig:joint33
+    100054: DemonioAnimacion:DemonioRig:joint4
+    100056: DemonioAnimacion:DemonioRig:joint5
+    100058: DemonioAnimacion:DemonioRig:joint6
+    100060: DemonioAnimacion:DemonioRig:joint7
+    100062: DemonioAnimacion:DemonioRig:joint8
+    100064: DemonioAnimacion:DemonioRig:joint9
+    400000: //RootNode
+    400002: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_FireHead_Geo
+    400004: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Geo
+    400006: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Teeth_Geo
+    400008: DemonioAnimacion:DemonioRig:joint1
+    400010: DemonioAnimacion:DemonioRig:joint10
+    400012: DemonioAnimacion:DemonioRig:joint11
+    400014: DemonioAnimacion:DemonioRig:joint12
+    400016: DemonioAnimacion:DemonioRig:joint13
+    400018: DemonioAnimacion:DemonioRig:joint14
+    400020: DemonioAnimacion:DemonioRig:joint15
+    400022: DemonioAnimacion:DemonioRig:joint2
+    400024: DemonioAnimacion:DemonioRig:joint20
+    400026: DemonioAnimacion:DemonioRig:joint21
+    400028: DemonioAnimacion:DemonioRig:joint22
+    400030: DemonioAnimacion:DemonioRig:joint23
+    400032: DemonioAnimacion:DemonioRig:joint24
+    400034: DemonioAnimacion:DemonioRig:joint25
+    400036: DemonioAnimacion:DemonioRig:joint26
+    400038: DemonioAnimacion:DemonioRig:joint27
+    400040: DemonioAnimacion:DemonioRig:joint28
+    400042: DemonioAnimacion:DemonioRig:joint29
+    400044: DemonioAnimacion:DemonioRig:joint3
+    400046: DemonioAnimacion:DemonioRig:joint30
+    400048: DemonioAnimacion:DemonioRig:joint31
+    400050: DemonioAnimacion:DemonioRig:joint32
+    400052: DemonioAnimacion:DemonioRig:joint33
+    400054: DemonioAnimacion:DemonioRig:joint4
+    400056: DemonioAnimacion:DemonioRig:joint5
+    400058: DemonioAnimacion:DemonioRig:joint6
+    400060: DemonioAnimacion:DemonioRig:joint7
+    400062: DemonioAnimacion:DemonioRig:joint8
+    400064: DemonioAnimacion:DemonioRig:joint9
+    2100000: DemonioAnimacion_DemonioRig_Demon_Retopology_v02_Ojos_RetopologizedFuegoCabeza_Remeshed_1_defaultMat1
+    2100002: DemonioAnimacion_DemonioRig_Demon_Retopology_v02_Ojos_RetopologizedDientes_Remeshed_1_defaultMat1
+    2100004: DemonioAnimacion_DemonioRig_Demon_Retopology_v02_Ojos_RetopologizedCuerpo_Remeshed_1_defaultMat1
+    2100006: DemonioAnimacion_DemonioRig_Demon_Retopology_v02_Ojos_RetopologizedCraneo_Remeshed_1_defaultMat1
+    2100008: DemonioAnimacion_DemonioRig_Demon_Retopology_v02_Ojos_RetopologizedOjos1_1_defaultMat1
+    4300000: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_FireHead_Geo
+    4300002: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Teeth_Geo
+    7400000: Idle
+    7400002: Golpe
+    7400004: Correr
+    9500000: //RootNode
+    13700000: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_FireHead_Geo
+    13700002: DemonioAnimacion:DemonioRig:Demon_Retopology_v02:Demon_Teeth_Geo
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 68
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Golpe
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 92
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Correr
+      takeName: Take 001
+      firstFrame: 96
+      lastFrame: 112
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.005
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

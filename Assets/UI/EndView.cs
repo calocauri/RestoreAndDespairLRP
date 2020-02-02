@@ -13,7 +13,14 @@ public class EndView : MonoBehaviour {
     public Transform P1Transform, P2Transform;
     private bool continueP1, continueP2;
     public GameObject readyP1, readyP2;
-    public Text endResult;
+    public Text endFixedResult;
+    public Text endDestroyedResult;
+
+    public Image fixedPercentage;
+    public Image destroyedPercentage;
+
+    public Image timerImage;
+    private float timerElapsed;
 
     void OnEnable() {
         // cam.transform.SetPositionAndRotation(cameraTransform.position, cameraTransform.rotation);
@@ -23,8 +30,22 @@ public class EndView : MonoBehaviour {
         playerOne.canMove = playerTwo.canMove = false;
         readyP1.SetActive(false);
         readyP2.SetActive(false);
-        StartCoroutine(Exit());
+        // StartCoroutine(Exit());
+
+        timerElapsed = 0f;
     }
+
+    private void Update() {
+        timerElapsed += Time.deltaTime;
+        timerImage.fillAmount = 1 - (timerElapsed / 5f);
+
+        if (timerElapsed > 5f) {
+            // got to start view
+            startView.SetActive(true);
+            gameObject.SetActive(false);
+        }
+    }
+
     IEnumerator Exit() {
         contButtons.SetActive(false);
         continueP1 = continueP2 = false;
@@ -44,7 +65,11 @@ public class EndView : MonoBehaviour {
 
     public void OnEnd(float gameResult) {
         print(gameResult);
-        endResult.text = $"{(1 - gameResult) * 100} vs {gameResult * 100}";
+        endFixedResult.text = $"{(gameResult) * 100}";
+        endDestroyedResult.text = $"{(1 - gameResult) * 100}";
+
+        fixedPercentage.fillAmount = gameResult;
+        destroyedPercentage.fillAmount = 1 - gameResult;
     }
 
 }

@@ -24,10 +24,10 @@ public class StartView : MonoBehaviour {
 
     void InputListener() {
         if (Input.GetButtonUp("Interact_1")) {
-            tick_1.enabled = readyPlayer_1 = !readyPlayer_1;
+            tick_2.enabled = readyPlayer_1 = !readyPlayer_1;
         }
         if (Input.GetButtonUp("Interact_2")) {
-            tick_2.enabled = readyPlayer_2 = !readyPlayer_2;
+            tick_1.enabled = readyPlayer_2 = !readyPlayer_2;
         }
         if (readyPlayer_1 && readyPlayer_2) {
             readyPlayer_1 = readyPlayer_2 = false;

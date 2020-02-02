@@ -50,7 +50,7 @@ public class FXSpawner : Singleton<FXSpawner> {
         var hitPooledObject = hitFXPool.Get();
         var pooledHitParticleSystem = (PoolableParticleSystem)hitPooledObject;
         pooledHitParticleSystem.ParticleSystem.Play();
-        pooledHitParticleSystem.transform.position = target.position;
+        pooledHitParticleSystem.transform.position = new Vector3(target.position.x, target.position.y + 1f, target.position.z);
     }
 
     public void StartDeathFX(MaterialType materialType, Transform target) {

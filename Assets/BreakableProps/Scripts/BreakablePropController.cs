@@ -36,7 +36,7 @@ public class BreakablePropController : PoolableObject, IInteractable {
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
 
-        InitialHealth = Random.Range(1, 10);
+        InitialHealth = Random.Range(1, 6);
         Init();
 
         if (Fixed != null && Destroyed != null) {

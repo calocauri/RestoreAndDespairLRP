@@ -1,8 +1,11 @@
+using UnityEngine;
+
 public static class InteractionHandler {
 
     public static int CalculateInteractionResult(MaterialType materialType, InteractionType interactionType) {
         if (interactionType == InteractionType.Heal) {
             return 1;
+            // return Random.Range(1, 2);
         }
 
         switch (materialType) {

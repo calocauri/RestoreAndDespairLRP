@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: b991833c7d972dc468f550a16b3d5478
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Body_Geo
+    100004: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Geo
+    100006: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Head_Geo
+    100008: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint10
+    100010: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint11
+    100012: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint12
+    100014: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint13
+    100016: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint14
+    100018: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint15
+    100020: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint16
+    100022: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint17
+    100024: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint18
+    100026: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint19
+    100028: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint2
+    100030: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint20
+    100032: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint21
+    100034: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint3
+    100036: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint4
+    100038: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint5
+    100040: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint6
+    100042: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint7
+    100044: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint8
+    100046: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint9
+    400000: //RootNode
+    400002: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Body_Geo
+    400004: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Geo
+    400006: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Head_Geo
+    400008: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint10
+    400010: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint11
+    400012: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint12
+    400014: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint13
+    400016: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint14
+    400018: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint15
+    400020: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint16
+    400022: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint17
+    400024: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint18
+    400026: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint19
+    400028: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint2
+    400030: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint20
+    400032: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint21
+    400034: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint3
+    400036: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint4
+    400038: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint5
+    400040: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint6
+    400042: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint7
+    400044: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint8
+    400046: MagoAnimacion:MagoRig:MagoRig:MagoRig:joint9
+    2100000: MagoAnimacion_MagoRig_MagoRig_MagoRig_Aprendiz_Geo_v03_Aprendiz_Body_Retopo_defaultMat1
+    2100002: MagoAnimacion_MagoRig_MagoRig_MagoRig_Aprendiz_Geo_v03_Aprendiz_Head_Retopo_defaultMat1
+    2100004: MagoAnimacion_MagoRig_MagoRig_MagoRig_Aprendiz_Geo_v03_Aprendiz_Eyes_Retopo_defaultMat1
+    4300000: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Body_Geo
+    4300002: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Head_Geo
+    7400000: Idle
+    7400002: AtaqueMago
+    7400004: Correr
+    9500000: //RootNode
+    13700000: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Body_Geo
+    13700002: MagoAnimacion:MagoRig:MagoRig:MagoRig:Aprendiz_Geo_v03:Aprendiz_Head_Geo
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AtaqueMago
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 134
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Correr
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

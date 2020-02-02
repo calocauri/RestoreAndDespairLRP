@@ -9167,12 +9167,12 @@ PrefabInstance:
         type: 3}
       propertyPath: P1Transform
       value: 
-      objectReference: {fileID: 436961552}
+      objectReference: {fileID: 172491782}
     - target: {fileID: 5679832304008357300, guid: 720d7673f5f178f409a3dc4660fb4ebf,
         type: 3}
       propertyPath: P2Transform
       value: 
-      objectReference: {fileID: 172491782}
+      objectReference: {fileID: 436961552}
     - target: {fileID: 5679832303549389306, guid: 720d7673f5f178f409a3dc4660fb4ebf,
         type: 3}
       propertyPath: player1

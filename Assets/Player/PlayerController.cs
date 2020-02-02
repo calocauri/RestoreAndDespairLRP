@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
@@ -26,6 +27,12 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        GameManager.OnGameEnded += OnGameEnded;
+    }
+
+    private void OnGameEnded(float result) {
+        collidingProps.Clear();
     }
 
     void Start() {

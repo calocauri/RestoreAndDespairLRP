@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private PropSpawner propSpawner;
 
-    private float gameDuration = 25f;
+    private float gameDuration = 20f;
     private float gameElapsed = 0f;
 
     public GameState GameState { get; private set; }

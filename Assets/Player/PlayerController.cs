@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, moveSpeed);
             previous = axis.sqrMagnitude;
 
-            if (collidingProp && Input.GetButton(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+            if (collidingProp && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
                 collidingProp.HandleInteraction(arma.damageType);
             }
         }

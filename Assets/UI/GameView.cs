@@ -6,14 +6,16 @@ using TMPro;
 
 public class GameView : MonoBehaviour {
     public EndView endView;
-    public Transform cameraTransform;
+    //public Transform cameraTransform;
     public Image timeBar;
     void Awake() {
         timeBar.fillAmount = 1;
         GameManager.OnGameEnded += OnEnd;
+        GameManager.OnGameEnded += endView.OnEnd;
     }
     void OnEnable() {
-        Camera.main.transform.SetPositionAndRotation(cameraTransform.position, cameraTransform.rotation);
+        Camera.main.orthographicSize = 9.2f;
+        GameManager.Shared.StartGame();
     }
     void Update() {
         SetTimeBar();
@@ -22,7 +24,6 @@ public class GameView : MonoBehaviour {
         timeBar.fillAmount = 1 - GameManager.Shared.GameProgress;
     }
     void OnEnd(float gameResult) {
-        print(gameResult);
         endView.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }

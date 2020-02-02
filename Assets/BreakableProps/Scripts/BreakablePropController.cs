@@ -206,6 +206,7 @@ public class BreakablePropController : PoolableObject, IInteractable {
     }
 
     public override void OnReturnToPool() {
+        StopAllCoroutines();
         FinishFixed();
     }
 

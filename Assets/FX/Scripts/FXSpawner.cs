@@ -11,7 +11,7 @@ public class FXSpawner : Singleton<FXSpawner> {
     [SerializeField]
     private InteractionTypeFX[] interactionFX;
     [SerializeField]
-    private InteractionTypeFX hitFX;
+    private PoolableParticleSystem hitFX;
 
     Dictionary<MaterialType, GenericObjectPool> materialFXPools = new Dictionary<MaterialType, GenericObjectPool>();
     Dictionary<MaterialType, GenericObjectPool> materialDeathFXPools = new Dictionary<MaterialType, GenericObjectPool>();
@@ -38,7 +38,7 @@ public class FXSpawner : Singleton<FXSpawner> {
         }
 
         hitFXPool = new GenericObjectPool();
-        hitFXPool.Init(hitFX.particleSystem);
+        hitFXPool.Init(hitFX);
     }
 
     public void StartMaterialFX(MaterialType materialType, Transform target) {

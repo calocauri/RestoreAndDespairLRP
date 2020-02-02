@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: 39ad43b41f303fc48b422d68024c4e98
+guid: 251c034fd669e3e4da2bcac893fe5329
 TextureImporter:
   fileIDToRecycleName:
-    21300000: slice1_0
-    21300002: slice1_1
-    21300004: slice1_2
-    21300006: slice1_3
+    21300000: slice2_0
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -67,7 +64,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,17 +72,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -99,67 +85,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slice1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 101
-        width: 65
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bc8c69d1ee2dd74c8d9d2ea312e605b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slice1_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 70
-        width: 65
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f29deb90ce0f874ebf2f807dcebeeb1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slice1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 37
-        width: 65
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2409bc141a4558045ba8a5738588a397
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slice1_3
+      name: slice2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -173,7 +99,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad4ba18283873a43a0ba49d48c0d367
+      spriteID: 411d273b9fcf62c4487a94dc1facd9fa
       vertices: []
       indices: 
       edges: []
@@ -181,7 +107,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9bd26f3535f8ee04d8b4168dc27a1335
+    spriteID: fbf82e7d4533a2b468865981f50f19e8
     vertices: []
     indices: 
     edges: []

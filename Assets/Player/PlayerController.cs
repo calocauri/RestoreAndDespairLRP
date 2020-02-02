@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     private new Rigidbody rigidbody;
 
-    public BreakablePropController collidingProp;
+    public List<BreakablePropController> collidingProps = new List<BreakablePropController>();
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
@@ -44,24 +45,33 @@ public class PlayerController : MonoBehaviour {
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, (canMove ? moveSpeed : 0));
             previous = axis.sqrMagnitude;
 
-            if (collidingProp && collidingProp.isActiveAndEnabled && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
-                collidingProp.HandleInteraction(arma.damageType);
+            if (collidingProps.Count > 0 && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+                var sorted = collidingProps.OrderBy(p => Vector3.Distance(p.transform.position, transform.position)).ToList();
+                var selected = sorted.Select(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
+                sorted[0].HandleInteraction(arma.damageType);
             }
         }
     }
 
     void OnTriggerEnter(Collider collider) {
         var temp = collider.gameObject.GetComponent<BreakablePropController>();
-        if (temp) {
-            // Debug.Log("OnTriggerEnter");
-            collidingProp = temp;
+
+        if (!player1) {
+            if (temp && temp.State != PropState.Destroyed) {
+                collidingProps.Add(temp);
+            }
+        }
+        else {
+            if (temp && temp.State == PropState.Destroyed) {
+                collidingProps.Add(temp);
+            }
         }
     }
     void OnTriggerExit(Collider collider) {
         var temp = collider.gameObject.GetComponent<BreakablePropController>();
-        if (temp && temp == collidingProp) {
+        if (temp) {
             // Debug.Log("OnTriggerExit");
-            collidingProp = null;
+            collidingProps.Remove(temp);
         }
     }
 

@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour {
                                 Vector3.SignedAngle(transform.forward, axis, Vector3.up) + 45
                         )
                 );
+                animator.SetBool("walking", true);
             }
+            else animator.SetBool("walking", false);
             yield return new WaitForFixedUpdate();
 
             var deltaVelocity = transform.forward * Mathf.Lerp(previous, axis.sqrMagnitude, 0.5f) * moveSpeed;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour {
                 var sorted = collidingProps.OrderBy(p => Vector3.Distance(p.transform.position, transform.position)).ToList();
                 var selected = sorted.Select(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
                 sorted[0].HandleInteraction(arma.damageType);
+                animator.SetTrigger("attack");
             }
 
             if (Input.GetButtonDown(scream)) {

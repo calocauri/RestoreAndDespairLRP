@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: a5960eb184286c8418aad0b457b4387f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: mdl_Librero_Top_mdl_LibreroVacio_Madera
+    100002: //RootNode
+    100004: mdl_LibreroVacio_Madera_mdl_Librero_Back
+    100006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1
+    100008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2
+    100010: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3
+    100012: mdl_LibreroVacio_Madera_mdl_Librero_SideL
+    100014: mdl_LibreroVacio_Madera_mdl_Librero_SideR
+    400000: mdl_Librero_Top_mdl_LibreroVacio_Madera
+    400002: //RootNode
+    400004: mdl_LibreroVacio_Madera_mdl_Librero_Back
+    400006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1
+    400008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2
+    400010: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3
+    400012: mdl_LibreroVacio_Madera_mdl_Librero_SideL
+    400014: mdl_LibreroVacio_Madera_mdl_Librero_SideR
+    2100000: mdl_Librero_Top_mdl_LibreroVacio_MaderaMat
+    2100002: mdl_LibreroVacio_Madera_mdl_Librero_BackMat
+    2100004: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1Mat
+    2100006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2Mat
+    2100008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3Mat
+    2100010: mdl_LibreroVacio_Madera_mdl_Librero_SideLMat
+    2100012: mdl_LibreroVacio_Madera_mdl_Librero_SideRMat
+    2300000: mdl_Librero_Top_mdl_LibreroVacio_Madera
+    2300002: mdl_LibreroVacio_Madera_mdl_Librero_Back
+    2300004: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1
+    2300006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2
+    2300008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3
+    2300010: mdl_LibreroVacio_Madera_mdl_Librero_SideL
+    2300012: mdl_LibreroVacio_Madera_mdl_Librero_SideR
+    3300000: mdl_Librero_Top_mdl_LibreroVacio_Madera
+    3300002: mdl_LibreroVacio_Madera_mdl_Librero_Back
+    3300004: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1
+    3300006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2
+    3300008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3
+    3300010: mdl_LibreroVacio_Madera_mdl_Librero_SideL
+    3300012: mdl_LibreroVacio_Madera_mdl_Librero_SideR
+    4300000: mdl_Librero_Top_mdl_LibreroVacio_Madera
+    4300002: mdl_LibreroVacio_Madera_mdl_Librero_Back
+    4300004: mdl_LibreroVacio_Madera_mdl_Librero_Repisa1
+    4300006: mdl_LibreroVacio_Madera_mdl_Librero_Repisa2
+    4300008: mdl_LibreroVacio_Madera_mdl_Librero_Repisa3
+    4300010: mdl_LibreroVacio_Madera_mdl_Librero_SideL
+    4300012: mdl_LibreroVacio_Madera_mdl_Librero_SideR
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

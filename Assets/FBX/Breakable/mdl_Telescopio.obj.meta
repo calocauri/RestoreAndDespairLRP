@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 545b0fb830a729a4f9a35b5305266887
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: mdl_Telescopio_pCube28
+    100004: mdl_Telescopio_pCube29
+    100006: mdl_Telescopio_pCube30
+    100008: mdl_Telescopio_pCube33
+    100010: mdl_Telescopio_pCube35
+    100012: mdl_Telescopio_pCube37
+    100014: mdl_Telescopio_pCube38
+    100016: mdl_Telescopio_pCylinder1
+    100018: mdl_Telescopio_pCylinder4
+    100020: mdl_Telescopio_pCylinder5
+    100022: mdl_Telescopio_pCylinder6
+    100024: pCylinder8_mdl_Telescopio
+    400000: //RootNode
+    400002: mdl_Telescopio_pCube28
+    400004: mdl_Telescopio_pCube29
+    400006: mdl_Telescopio_pCube30
+    400008: mdl_Telescopio_pCube33
+    400010: mdl_Telescopio_pCube35
+    400012: mdl_Telescopio_pCube37
+    400014: mdl_Telescopio_pCube38
+    400016: mdl_Telescopio_pCylinder1
+    400018: mdl_Telescopio_pCylinder4
+    400020: mdl_Telescopio_pCylinder5
+    400022: mdl_Telescopio_pCylinder6
+    400024: pCylinder8_mdl_Telescopio
+    2100000: mdl_Telescopio_pCube28Mat
+    2100002: mdl_Telescopio_pCube29Mat
+    2100004: mdl_Telescopio_pCube30Mat
+    2100006: mdl_Telescopio_pCube33Mat
+    2100008: mdl_Telescopio_pCube35Mat
+    2100010: mdl_Telescopio_pCube37Mat
+    2100012: mdl_Telescopio_pCube38Mat
+    2100014: mdl_Telescopio_pCylinder1Mat
+    2100016: mdl_Telescopio_pCylinder4Mat
+    2100018: mdl_Telescopio_pCylinder5Mat
+    2100020: mdl_Telescopio_pCylinder6Mat
+    2100022: pCylinder8_mdl_TelescopioMat
+    2300000: mdl_Telescopio_pCube28
+    2300002: mdl_Telescopio_pCube29
+    2300004: mdl_Telescopio_pCube30
+    2300006: mdl_Telescopio_pCube33
+    2300008: mdl_Telescopio_pCube35
+    2300010: mdl_Telescopio_pCube37
+    2300012: mdl_Telescopio_pCube38
+    2300014: mdl_Telescopio_pCylinder1
+    2300016: mdl_Telescopio_pCylinder4
+    2300018: mdl_Telescopio_pCylinder5
+    2300020: mdl_Telescopio_pCylinder6
+    2300022: pCylinder8_mdl_Telescopio
+    3300000: mdl_Telescopio_pCube28
+    3300002: mdl_Telescopio_pCube29
+    3300004: mdl_Telescopio_pCube30
+    3300006: mdl_Telescopio_pCube33
+    3300008: mdl_Telescopio_pCube35
+    3300010: mdl_Telescopio_pCube37
+    3300012: mdl_Telescopio_pCube38
+    3300014: mdl_Telescopio_pCylinder1
+    3300016: mdl_Telescopio_pCylinder4
+    3300018: mdl_Telescopio_pCylinder5
+    3300020: mdl_Telescopio_pCylinder6
+    3300022: pCylinder8_mdl_Telescopio
+    4300000: mdl_Telescopio_pCube28
+    4300002: mdl_Telescopio_pCube29
+    4300004: mdl_Telescopio_pCube30
+    4300006: mdl_Telescopio_pCube33
+    4300008: mdl_Telescopio_pCube35
+    4300010: mdl_Telescopio_pCube37
+    4300012: mdl_Telescopio_pCube38
+    4300014: mdl_Telescopio_pCylinder1
+    4300016: mdl_Telescopio_pCylinder4
+    4300018: mdl_Telescopio_pCylinder5
+    4300020: mdl_Telescopio_pCylinder6
+    4300022: pCylinder8_mdl_Telescopio
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

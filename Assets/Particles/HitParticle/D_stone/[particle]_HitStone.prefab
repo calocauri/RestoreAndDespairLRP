@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8500003003627450259}
   - component: {fileID: 3302803567162855784}
   - component: {fileID: 1880097190283167223}
+  - component: {fileID: 2748072314606233203}
   m_Layer: 0
   m_Name: '[particle]_HitStone'
   m_TagString: Untagged
@@ -4760,6 +4761,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2748072314606233203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600634571264503491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ac7da54bab2ac439c7d61865c026b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 3302803567162855784}
 --- !u!1 &3849182831690319740
 GameObject:
   m_ObjectHideFlags: 0

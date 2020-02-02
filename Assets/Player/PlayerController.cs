@@ -11,8 +11,16 @@ public class PlayerController : MonoBehaviour {
     public Weapon arma = new Weapon();
     public float moveSpeed = 0.1f;
     public bool canMove = true;
+    public Animator animator;
+
+    private new Rigidbody rigidbody;
 
     public BreakablePropController collidingProp;
+
+    private void Awake() {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     void Start() {
         StartCoroutine(InputListener());
     }
@@ -28,11 +36,15 @@ public class PlayerController : MonoBehaviour {
                         )
                 );
             }
-            yield return null;
-            transform.localPosition += transform.forward * Mathf.Lerp(previous, axis.sqrMagnitude, 0.5f) * moveSpeed * Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+
+            var deltaVelocity = transform.forward * Mathf.Lerp(previous, axis.sqrMagnitude, 0.5f) * moveSpeed;
+
+            rigidbody.velocity += deltaVelocity;
+            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, moveSpeed);
             previous = axis.sqrMagnitude;
-            // if(Input.GetButton(interact)) Debug.Log(interact);
-            if (collidingProp && Input.GetButton(interact)) {
+
+            if (collidingProp && Input.GetButton(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
                 collidingProp.HandleInteraction(arma.damageType);
             }
         }
@@ -41,14 +53,14 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         var temp = collider.gameObject.GetComponent<BreakablePropController>();
         if (temp) {
-            Debug.Log("OnTriggerEnter");
+            // Debug.Log("OnTriggerEnter");
             collidingProp = temp;
         }
     }
     void OnTriggerExit(Collider collider) {
         var temp = collider.gameObject.GetComponent<BreakablePropController>();
         if (temp && temp == collidingProp) {
-            Debug.Log("OnTriggerExit");
+            // Debug.Log("OnTriggerExit");
             collidingProp = null;
         }
     }

@@ -24,7 +24,7 @@ public class GridManager : Singleton<GridManager> {
             for (var y = 0; y < height; y++) {
                 var pos = new Vector2Int(x, y);
                 grid[pos] = false;
-                InstantiateFloorTile(pos);
+                // InstantiateFloorTile(pos);
             }
         }
     }

@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private AudioClip screamClip;
 
+    [SerializeField]
+    private Transform weaponSocked;
+
     private new Rigidbody rigidbody;
     private AudioSource audioSource;
 

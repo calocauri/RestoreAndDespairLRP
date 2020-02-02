@@ -90,7 +90,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000000, guid: 7510ce7fc712f884aad6a9851866a83e,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -9288,12 +9288,12 @@ PrefabInstance:
         type: 3}
       propertyPath: P1Transform
       value: 
-      objectReference: {fileID: 436961552}
+      objectReference: {fileID: 172491782}
     - target: {fileID: 5679832304008357300, guid: 720d7673f5f178f409a3dc4660fb4ebf,
         type: 3}
       propertyPath: P2Transform
       value: 
-      objectReference: {fileID: 172491782}
+      objectReference: {fileID: 436961552}
     - target: {fileID: 5679832303549389306, guid: 720d7673f5f178f409a3dc4660fb4ebf,
         type: 3}
       propertyPath: player1

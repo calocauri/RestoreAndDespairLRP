@@ -9523,6 +9523,7 @@ GameObject:
   - component: {fileID: 2428879374923291417}
   - component: {fileID: 8761441940031301090}
   - component: {fileID: 5644273881040367997}
+  - component: {fileID: 7428563759746182243}
   m_Layer: 1
   m_Name: '[particle]_HitLeaf'
   m_TagString: Untagged
@@ -14271,6 +14272,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7428563759746182243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7330463051609725513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ac7da54bab2ac439c7d61865c026b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 8761441940031301090}
 --- !u!1 &8446135275696477895
 GameObject:
   m_ObjectHideFlags: 0

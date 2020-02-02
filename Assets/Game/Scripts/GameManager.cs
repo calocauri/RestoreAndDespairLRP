@@ -32,9 +32,9 @@ public class GameManager : Singleton<GameManager> {
     private void EndGame() {
         GameState = GameState.Ended;
 
+        var fixedPercentage = CalculateFixedPercentage();
         propSpawner.ClearProps();
 
-        var fixedPercentage = CalculateFixedPercentage();
         OnGameEnded(fixedPercentage);
         print($"Game ended");
     }

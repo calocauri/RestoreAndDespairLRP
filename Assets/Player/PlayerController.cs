@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour {
             var deltaVelocity = transform.forward * Mathf.Lerp(previous, axis.sqrMagnitude, 0.5f) * moveSpeed;
 
             rigidbody.velocity += deltaVelocity;
-            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, moveSpeed);
+            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, (canMove ? moveSpeed : 0));
             previous = axis.sqrMagnitude;
 
-            if (collidingProp && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+            if (collidingProp && collidingProp.isActiveAndEnabled && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
                 collidingProp.HandleInteraction(arma.damageType);
             }
         }

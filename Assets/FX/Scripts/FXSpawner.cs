@@ -10,10 +10,13 @@ public class FXSpawner : Singleton<FXSpawner> {
     private MaterialTypeFX[] materialsDeathFX;
     [SerializeField]
     private InteractionTypeFX[] interactionFX;
+    [SerializeField]
+    private InteractionTypeFX hitFX;
 
     Dictionary<MaterialType, GenericObjectPool> materialFXPools = new Dictionary<MaterialType, GenericObjectPool>();
     Dictionary<MaterialType, GenericObjectPool> materialDeathFXPools = new Dictionary<MaterialType, GenericObjectPool>();
     Dictionary<InteractionType, GenericObjectPool> interactionFXPools = new Dictionary<InteractionType, GenericObjectPool>();
+    GenericObjectPool hitFXPool;
 
     protected override void Awake() {
         base.Awake();
@@ -33,17 +36,25 @@ public class FXSpawner : Singleton<FXSpawner> {
             newMaterialFXPool.Init(intertFX.particleSystem);
             interactionFXPools[intertFX.type] = newMaterialFXPool;
         }
+
+        hitFXPool = new GenericObjectPool();
+        hitFXPool.Init(hitFX.particleSystem);
     }
 
     public void StartMaterialFX(MaterialType materialType, Transform target) {
-        var pooledObject = materialDeathFXPools[materialType].Get();
+        var pooledObject = materialFXPools[materialType].Get();
         var pooledParticleSystem = (PoolableParticleSystem)pooledObject;
         pooledParticleSystem.ParticleSystem.Play();
         pooledParticleSystem.transform.position = target.position;
+
+        var hitPooledObject = hitFXPool.Get();
+        var pooledHitParticleSystem = (PoolableParticleSystem)hitPooledObject;
+        pooledHitParticleSystem.ParticleSystem.Play();
+        pooledHitParticleSystem.transform.position = target.position;
     }
 
     public void StartDeathFX(MaterialType materialType, Transform target) {
-        var pooledObject = materialFXPools[materialType].Get();
+        var pooledObject = materialDeathFXPools[materialType].Get();
         var pooledParticleSystem = (PoolableParticleSystem)pooledObject;
         pooledParticleSystem.ParticleSystem.Play();
         pooledParticleSystem.transform.position = target.position;

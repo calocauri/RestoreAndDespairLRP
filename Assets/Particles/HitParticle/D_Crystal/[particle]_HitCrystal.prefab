@@ -9523,6 +9523,7 @@ GameObject:
   - component: {fileID: 355475070699182642}
   - component: {fileID: 6687035499579516105}
   - component: {fileID: 7714533589290217558}
+  - component: {fileID: 4454158159892463591}
   m_Layer: 1
   m_Name: '[particle]_HitCrystal'
   m_TagString: Untagged
@@ -14270,3 +14271,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4454158159892463591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675003676900301666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ac7da54bab2ac439c7d61865c026b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 6687035499579516105}

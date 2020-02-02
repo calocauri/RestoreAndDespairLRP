@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 
 public class GameView : MonoBehaviour {
+    public EndView endView;
     public Transform cameraTransform;
     public Image timeBar;
     void Awake() {
-        timeBar.transform.localScale = Vector3.one;
+        timeBar.fillAmount = 1;
         GameManager.OnGameEnded += OnEnd;
     }
     void OnEnable() {
@@ -18,9 +19,11 @@ public class GameView : MonoBehaviour {
         SetTimeBar();
     }
     void SetTimeBar() {
-        timeBar.transform.localScale = Vector3.one * (1 - GameManager.Shared.GameProgress);
+        timeBar.fillAmount = 1 - GameManager.Shared.GameProgress;
     }
     void OnEnd(float gameResult) {
+        print(gameResult);
+        endView.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 }

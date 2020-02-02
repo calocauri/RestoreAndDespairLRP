@@ -103,6 +103,8 @@ public class BreakablePropController : PoolableObject, IInteractable {
                 ForceMode.Impulse
             );
         }
+
+        FXSpawner.Shared.StartDeathFX(materialType, transform);
     }
 
     private void RepairProp() {

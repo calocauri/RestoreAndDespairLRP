@@ -20,12 +20,29 @@ public class BreakablePropController : PoolableObject, IInteractable {
     private Collider[] DestroyedPiecesColliders;
 
     // TODO: set real health
-    private int InitialHealth;
-    // {
-    //     get {
-    //         // return size.x * size.y;
-    //     }
-    // }
+    private int InitialHealth {
+        get {
+            int typeHealth = 0;
+            switch (Type) {
+                case MaterialType.Wood:
+                    typeHealth = 3;
+                    break;
+                case MaterialType.Stone:
+                    typeHealth = 4;
+                    break;
+                case MaterialType.Paper:
+                    typeHealth = 2;
+                    break;
+                case MaterialType.Crystal:
+                    typeHealth = 1;
+                    break;
+                case MaterialType.Organic:
+                    typeHealth = 3;
+                    break;
+            }
+            return typeHealth + Mathf.Max(size.x, size.y) - 1;
+        }
+    }
     private new Rigidbody rigidbody;
     private new Collider collider;
 
@@ -36,7 +53,6 @@ public class BreakablePropController : PoolableObject, IInteractable {
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
 
-        InitialHealth = Random.Range(1, 6);
         Init();
 
         if (Fixed != null && Destroyed != null) {
@@ -185,6 +201,7 @@ public class BreakablePropController : PoolableObject, IInteractable {
         }
         else if (interactionType != InteractionType.Heal) {
             FXSpawner.Shared.StartMaterialFX(materialType, transform);
+            PropSoundController.Shared.PlaySoundForType(materialType);
         }
 
         var startingHealth = Health;

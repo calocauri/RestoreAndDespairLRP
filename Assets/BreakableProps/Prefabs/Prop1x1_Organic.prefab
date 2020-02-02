@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85865d7c4f8ee4851a64f6d20efcf358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  size: {x: 2, y: 2}
   materialType: 3
   Fixed: {fileID: 2350440989442618618}
   Destroyed: {fileID: 2350440989442618616}
@@ -79,7 +79,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 524fadf35b9face40b35d81fb8dad972, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 86a4193e98201574089490c86e39b364, type: 3}
 --- !u!54 &8080028646009389772
 Rigidbody:
   m_ObjectHideFlags: 0

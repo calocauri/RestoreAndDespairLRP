@@ -9,17 +9,23 @@ public class PlayerController : MonoBehaviour {
     private string horizontal => player1 ? "Horizontal_1" : "Horizontal_2";
     private string vertical => player1 ? "Vertical_1" : "Vertical_2";
     private string interact => player1 ? "Interact_1" : "Interact_2";
+    private string scream => player1 ? "Scream_1" : "Scream_2";
     public Weapon arma = new Weapon();
     public float moveSpeed = 0.1f;
     public bool canMove = true;
     public Animator animator;
 
+    [SerializeField]
+    private AudioClip screamClip;
+
     private new Rigidbody rigidbody;
+    private AudioSource audioSource;
 
     public List<BreakablePropController> collidingProps = new List<BreakablePropController>();
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start() {
@@ -49,6 +55,10 @@ public class PlayerController : MonoBehaviour {
                 var sorted = collidingProps.OrderBy(p => Vector3.Distance(p.transform.position, transform.position)).ToList();
                 var selected = sorted.Select(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
                 sorted[0].HandleInteraction(arma.damageType);
+            }
+
+            if (Input.GetButtonDown(scream)) {
+                audioSource.PlayOneShot(screamClip);
             }
         }
     }

@@ -16,7 +16,8 @@ public class BreakablePropController : PoolableObject, IInteractable {
     private GameObject Fixed;
     [SerializeField]
     private GameObject Destroyed;
-    private Rigidbody[] DestroyedPieces;
+    private Rigidbody[] DestroyedPiecesRigidbodies;
+    private Collider[] DestroyedPiecesColliders;
 
     // TODO: set real health
     private int InitialHealth;
@@ -26,19 +27,21 @@ public class BreakablePropController : PoolableObject, IInteractable {
     //     }
     // }
     private new Rigidbody rigidbody;
-    // private new Collider collider;
+    private new Collider collider;
 
     public PropState State { get; private set; }
     public int Health { get; private set; }
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
 
         InitialHealth = Random.Range(1, 10);
         Init();
 
         if (Fixed != null && Destroyed != null) {
-            DestroyedPieces = Destroyed.GetComponentsInChildren<Rigidbody>();
+            DestroyedPiecesRigidbodies = Destroyed.GetComponentsInChildren<Rigidbody>();
+            DestroyedPiecesColliders = Destroyed.GetComponentsInChildren<Collider>();
         }
     }
 
@@ -87,9 +90,13 @@ public class BreakablePropController : PoolableObject, IInteractable {
         var explosionPos = transform.position;
         var explosionForce = 50f;
 
-        foreach (var piece in DestroyedPieces) {
+        for (int i = 0; i < DestroyedPiecesRigidbodies.Length; i++) {
+            Rigidbody piece = DestroyedPiecesRigidbodies[i];
             piece.useGravity = true;
             piece.isKinematic = false;
+
+            DestroyedPiecesColliders[i].enabled = true;
+
             piece.AddForceAtPosition(
                 Random.insideUnitSphere.normalized * explosionForce,
                 explosionPos,
@@ -109,9 +116,13 @@ public class BreakablePropController : PoolableObject, IInteractable {
         float elapsed = 0f;
         var initialPositions = new List<Vector3>();
         var initialRotations = new List<Vector3>();
-        foreach (var piece in DestroyedPieces) {
+        for (int i = 0; i < DestroyedPiecesRigidbodies.Length; i++) {
+            Rigidbody piece = DestroyedPiecesRigidbodies[i];
             piece.useGravity = false;
             piece.isKinematic = true;
+
+            DestroyedPiecesColliders[i].enabled = false;
+
             initialPositions.Add(piece.transform.localPosition);
             initialRotations.Add(piece.transform.localEulerAngles);
         }
@@ -119,8 +130,8 @@ public class BreakablePropController : PoolableObject, IInteractable {
         while (elapsed < duration) {
             float t = elapsed / duration;
 
-            for (int i = 0; i < DestroyedPieces.Length; i++) {
-                Rigidbody piece = DestroyedPieces[i];
+            for (int i = 0; i < DestroyedPiecesRigidbodies.Length; i++) {
+                Rigidbody piece = DestroyedPiecesRigidbodies[i];
                 piece.transform.localPosition = Vector3.Lerp(
                     initialPositions[i],
                     Vector3.zero,
@@ -137,8 +148,11 @@ public class BreakablePropController : PoolableObject, IInteractable {
             yield return null;
         }
 
+        FinishFixed();
+    }
 
-        foreach (var piece in DestroyedPieces) {
+    private void FinishFixed() {
+        foreach (var piece in DestroyedPiecesRigidbodies) {
             piece.transform.localPosition = Vector3.zero;
             piece.transform.localEulerAngles = Vector3.zero;
         }
@@ -190,7 +204,7 @@ public class BreakablePropController : PoolableObject, IInteractable {
     }
 
     public override void OnReturnToPool() {
-
+        FinishFixed();
     }
 
     public override void OnCreatedFromPool(GenericObjectPool pool) {

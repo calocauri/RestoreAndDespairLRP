@@ -57,6 +57,12 @@ public class PlayerController : MonoBehaviour {
         StartCoroutine(InputListener());
     }
 
+    private void Update() {
+        if (Input.GetButtonDown(scream)) {
+            audioSource.PlayOneShot(screamClip);
+        }
+    }
+
     IEnumerator InputListener() {
         float previous = 0f;
         while (true) {
@@ -83,10 +89,6 @@ public class PlayerController : MonoBehaviour {
                 var selected = sorted.Select(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
                 sorted[0].HandleInteraction(arma.damageType);
                 animator.SetTrigger("attack");
-            }
-
-            if (Input.GetButtonDown(scream)) {
-                audioSource.PlayOneShot(screamClip);
             }
         }
     }

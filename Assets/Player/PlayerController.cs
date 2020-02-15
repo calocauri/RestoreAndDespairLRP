@@ -20,7 +20,9 @@ public class PlayerController : MonoBehaviour {
     private AudioClip screamClip;
 
     [SerializeField]
-    private Transform weaponSocked;
+    private Transform weaponSocket;
+    [SerializeField]
+    private Weapon[] possibleWeapons;
 
     private new Rigidbody rigidbody;
     private AudioSource audioSource;
@@ -32,10 +34,23 @@ public class PlayerController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
         GameManager.OnGameEnded += OnGameEnded;
+        RandomWeapon();
     }
 
     private void OnGameEnded(float result) {
         collidingProps.Clear();
+        RandomWeapon();
+    }
+
+    private void RandomWeapon() {
+        if (player1) return;
+
+        foreach (var weap in possibleWeapons) {
+            weap.gameObject.SetActive(false);
+        }
+
+        arma = possibleWeapons[UnityEngine.Random.Range(0, possibleWeapons.Length)];
+        arma.gameObject.SetActive(true);
     }
 
     void Start() {

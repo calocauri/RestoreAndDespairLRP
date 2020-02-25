@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     private Transform weaponSocket;
     [SerializeField]
     private Weapon[] possibleWeapons;
+    [SerializeField]
+    private Transform targetPropIndicator;
 
     private new Rigidbody rigidbody;
     private AudioSource audioSource;
@@ -84,11 +86,17 @@ public class PlayerController : MonoBehaviour {
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, (canMove ? moveSpeed : 0));
             previous = axis.sqrMagnitude;
 
-            if (collidingProps.Count > 0 && Input.GetButtonDown(interact) && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+            if (collidingProps.Count > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
                 var sorted = collidingProps.OrderBy(p => Vector3.Distance(p.transform.position, transform.position)).ToList();
-                var selected = sorted.Select(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
-                sorted[0].HandleInteraction(arma.damageType);
-                animator.SetTrigger("attack");
+                var target = sorted.First(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
+                target.HandleInteraction(arma.damageType);
+                targetPropIndicator.position = target.transform.position;
+
+                if (Input.GetButtonDown(interact) )
+                    animator.SetTrigger("attack");
+            }
+            else {
+                targetPropIndicator.gameObject.SetActive(false);
             }
         }
     }

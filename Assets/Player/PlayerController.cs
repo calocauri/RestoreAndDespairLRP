@@ -86,9 +86,10 @@ public class PlayerController : MonoBehaviour {
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, (canMove ? moveSpeed : 0));
             previous = axis.sqrMagnitude;
 
-            if (collidingProps.Count > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+            if (collidingProps.Count > 0 &&!animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
                 var sorted = collidingProps.OrderBy(p => Vector3.Distance(p.transform.position, transform.position)).ToList();
-                var target = sorted.First(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
+                var target = sorted.FirstOrDefault(p => !player1 ? p.State != PropState.Destroyed : p.State == PropState.Destroyed);
+                if(target == null) continue;
                 target.HandleInteraction(arma.damageType);
                 targetPropIndicator.position = target.transform.position;
 

@@ -1,0 +1,611 @@
+
+<html>
+  <head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
+    <script type="text/javascript" src="controls/joystick/joystick.js"></script>
+    <style type=text/css>
+    /* the style sheet dictates what our elements (buttons, backgrounds etc.) will look like. */
+        .joystick {
+          position: absolute;
+          top: 5%;
+          width: 100%;
+          height: 90%;
+          border-radius: 100%;
+          background-color: black;
+          background: url(joystick-bg.png) no-repeat center center;
+          background-size: contain;
+        }
+
+        .joystick-relative {
+          width: 100%;
+          height: 100%;
+        }
+
+        .joystick-relative-stick {
+          box-sizing: border-box;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 50%;
+          height: 0;
+          padding-bottom: 50%;
+          margin-left: -25%;
+          margin-top: -25%;
+          border-radius: 100%;
+          background-color: #000000;
+          border: 3px solid #ADDE00;
+        }
+        body {
+          -ms-user-select: none;
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+  
+        .example-container {
+          position: relative;
+          background-color: #3b3b3b;
+          text-align: center;
+          font-family: sans-serif;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          max-width: 720px;
+          max-height: 360px;
+        }
+  
+        /* You need to explicitly position your joystick */
+        #joystick_left {
+          position: absolute;
+          width: 45%;
+          height: 90%;
+          top: 5%;
+          left: 5%;
+        }
+  
+        #joystick_right {
+          position: absolute;
+          width: 45%;
+          height: 90%;
+          top: 5%;
+          right: 5%;
+        }
+    </style>
+  
+    <script type="text/javascript">
+      var airconsole;
+      function App()
+      {
+        var me = this;
+        me.airconsole = new AirConsole({"orientation": "landscape", "synchronize_time" : "true"});
+        var rateLimiter = new RateLimiter(airconsole);
+        var joystick_left = new Joystick("joystick_left", {
+          "touchstart": function() {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_left": {
+                touch: true
+              }
+            });
+          },
+          "touchmove": function(position) {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_left": {
+                position: position
+              }
+            });
+          },
+          "touchend": function(had_direction) {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_left": {
+                touch: false
+              }
+            });
+          }
+        });
+        var joystick_right = new Joystick("joystick_right", {
+          "touchstart": function() {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_right": {
+                touch: true
+              }
+            });
+          },
+          "touchmove": function(position) {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_right": {
+                position: position
+              }
+            });
+          },
+          "touchend": function(had_direction) {
+            rateLimiter.message(AirConsole.SCREEN, {
+              "joystick_right": {
+                touch: false
+              }
+            });
+          },
+          absolute_start: false
+        });
+      }
+      /**
+       * An object containing a configuration for the Joystick constructor.
+       * @typedef {object} JoystickConfig
+       * @property {Function} touchstart -
+       *           The callback that gets called when the Joystick is touched
+       * @property {Joystick~touchMoveCallback} touchmove -
+       *           The callback that gets called when the Joystick is moved
+       * @property {Function} touchend -
+       *           The callback that gets called when the Joystick is released
+       * @property {number} distance - The maximum distance a joystick can be moved
+       *                               relative to it's size (min(x,y)).
+       *                               Default: 0.5
+       * @property {number} min_delta - The minimum delta a joystick needs to have
+       *                                moved before we call the callback.
+       *                                Default: 0.05
+       * @property {boolean} absolute_start - If true, the joystick does a first
+       *                                      move to the absolute position of the
+       *                                      first touch position. Default: true
+       * @property {boolean} log - Debug output iff a callback is not set.
+       */
+
+      /**
+       * A coordinate is an object with an x and y property.
+       * @typedef {object} Joystick~Offset
+       * @param {number} x - The x offset. A value between -1 and 1;
+       * @param {number} y - The y offset. A value between -1 and 1;
+       */
+
+      /**
+       * This callback is called when the direction of a Joystick changes.
+       * @callback Joystick~touchMoveCallback
+       * @param {Joystick~Offset} offset - The offset of the joystick.
+       */
+
+      /**
+       * A coordinate is an object with an x and y property.
+       * @typedef {object} Joystick~Coordinate
+       * @param {number} x - The x coordinate
+       * @param {number} y - The y coordinate
+       */
+
+      /**
+       * An analogue relative joystick.
+       * @param {HTMLElement|string} el - The HTML container element or its ID.
+       * @param {JoystickConfig} opts - Constructor config.
+       * @constructor
+       */
+      function Joystick(el, opts) {
+        var me = this;
+        opts = opts || {}
+        me.distance_factor = opts.distance || 0.05;
+        me.min_delta = opts.min_delta || 0.25;
+        me.min_delta_sq = me.min_delta * me.min_delta;
+        me.absolute_start = (opts.absolute_start == undefined ?
+            true : opts.absolute_start)
+
+        var log_cb = function(name) {
+          return function (data) {
+            if (!opts.log) {
+              return;
+            }
+            if (window.console && window.console.log) {
+              window.console.log("joystick.js " + name + "(" +
+                                Array.prototype.slice.call(arguments).join(", ") +
+                                ");");
+            }
+          };
+        };
+
+        me.start_cb = opts["touchstart"] || log_cb("touchstart");
+        me.move_cb = opts["touchmove"] || log_cb("touchmove");
+        me.end_cb = opts["touchend"] || log_cb("touchend");
+
+        if (typeof el == "string") {
+          el = document.getElementById(el);
+        }
+
+        me.container = el;
+        me.relative = me.container.getElementsByClassName("joystick-relative")[0];
+        if (me.relative) {
+          me.relative.style.position = "absolute";
+          me.placeRelative(0, 0);
+        }
+        var active =false;
+        me.container.addEventListener("touchstart", function(e) {
+          if (!active) {
+            active = true;
+            var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
+            me.onStart(me.getRelativePos(touch));
+            e.preventDefault();
+          }
+        });
+        me.container.addEventListener("touchmove", function(e) {
+          if (active) {
+            var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
+            me.onMove(me.getRelativePos(touch));
+            e.preventDefault();
+          }
+        });
+        me.container.addEventListener("touchend", function(e) {
+          if (active) {
+            active = false;
+            me.onEnd();
+            e.preventDefault();
+          }
+        });
+        var mouse_down = false;
+        if (!('ontouchstart' in document.documentElement)) {
+          me.container.addEventListener("mousedown", function(e) {
+            if (!mouse_down) {
+              me.onStart(me.getRelativePos(e));
+              mouse_down = true;
+              e.preventDefault();
+            }
+          });
+          me.container.addEventListener("mousemove", function(e) {
+            if (mouse_down) {
+              me.onMove(me.getRelativePos(e));
+            }
+            e.preventDefault();
+          });
+          me.container.addEventListener("mouseup", function(e) {
+            if (mouse_down) {
+              me.onEnd();
+              mouse_down = false;
+            }
+            e.preventDefault();
+          })
+        }
+      }
+
+
+      /**
+       * Gets called when the Joystick gets touched
+       * @param {Joystick~Coordinate} pos - The position of the initial touch.
+       */
+      Joystick.prototype.onStart = function(pos) {
+        var me = this;
+        me.last_move_call = {x: 0, y: 0};
+        me.container.className += " joystick-active";
+        if (!me.absolute_start) {
+          me.base = pos;
+          me.start_cb();
+        } else {
+          var size = me.container.getBoundingClientRect();
+          me.base = {x: size.width / 2, y: size.height / 2};
+          me.start_cb();
+          me.onMove(pos);
+        }
+      };
+
+      /**
+       * Gets called when the Joystick is moved.
+       * @param {Joystick~Coordinate} pos
+       */
+      Joystick.prototype.onMove = function(pos) {
+        var me = this;
+        var dx = pos.x - me.base.x;
+        var dy = pos.y - me.base.y;
+        var distance_sq = (dx*dx + dy*dy);
+        var max_distance = me.distance();
+        var max_distance_sq = max_distance * max_distance;
+        if (distance_sq > max_distance_sq) {
+          var distance = Math.sqrt(distance_sq);
+          var normalized_dx = dx / distance;
+          var normalized_dy = dy / distance;
+          me.base.x = pos.x - normalized_dx * max_distance;
+          me.base.y = pos.y - normalized_dy * max_distance;
+          dx = pos.x - me.base.x;
+          dy = pos.y - me.base.y;
+        }
+        me.placeRelative(dx, dy);
+        var candidate = {"x": dx / max_distance, "y": dy / max_distance};
+        var call_dx = candidate.x - me.last_move_call.x;
+        var call_dy = candidate.y - me.last_move_call.y;
+        if ((call_dx * call_dx) + (call_dy * call_dy) >= me.min_delta_sq) {
+          me.last_move_call = candidate;
+          me.move_cb(candidate);
+        }
+      };
+
+      /**
+       * Gets called when the the Joystick is released.
+       */
+      Joystick.prototype.onEnd = function() {
+        var me = this;
+        me.placeRelative(0, 0);
+        me.container.className =
+            me.container.className.replace(/ joystick\-active/g, "");
+        me.end_cb();
+      };
+
+      /**
+       * Returns the page offset of an event
+       * @param {Event} e - An event
+       * @return {Joystick~Coordinate}
+       */
+      Joystick.prototype.getRelativePos = function(e) {
+        var me = this;
+        var rect = me.container.getBoundingClientRect();
+        return { "x": e.pageX - rect.left, "y": e.pageY - rect.top };
+      };
+
+      /**
+       * Places the relative joystick element.
+       * @param {number} dx - The x offset in pixels
+       * @param {number} dy - The y offset in pixels
+       */
+      Joystick.prototype.placeRelative = function(dx, dy) {
+        var me = this;
+        if (!me.relative) {
+          return;
+        }
+        var style = me.relative.style;
+        var distance = me.distance();
+        style.left = (dx) + "px";
+        style.right = (distance - dx) + "px";
+        style.top = (dy) + "px";
+        style.bottom = (distance - dy) + "px";
+      };
+
+      /**
+       * Calculate the maximum distance a joystick is allowed to be moved.
+       * @return {Number}
+       */
+      Joystick.prototype.distance = function() {
+        var me = this;
+        var size = me.container.getBoundingClientRect();
+        return Math.min(size.width, size.height) * me.distance_factor / 2;
+      }
+      /**
+       * An object containing a configuration for the RateLimiter constructor.
+       * @typedef {object} RateLimiterConfig
+       * @property {number|undefined} rate_limit - Maximum amount of AirConsole calls
+       *           per second. Default is 10. Max is 10.
+       * @property {number|undefined} no_rate_limit_for_first_calls - You can disable
+       *           rate limiting for the first X calls during one second.
+       *           The following calls will be slower during the first second, so we
+       *           do not burst over the rate_limit. Default is 2. Max is 5.
+       */
+
+
+      /**
+       * The Rate Limiter helps you to send less than 25 messages per second.
+       * It does this for messages and Custom Device States.
+       * It sends data immediately in the beginning and then starts
+       * rate limiting if the rate is too high: It merges the data together and
+       * sends it in intervals so the rate limit is not exceeded.
+       *
+       * This is how the merging works when requests start being rate limited:
+       * If you send { "a": 1, "b": 2 } and then {"a": 3, "c": 4}, the actual rate
+       * limited message is merged to { "a": 3, "b": 2, "c": 4 }.
+       * Note that all fields are present, but "a" was overwritten by a later
+       * call while "b" was untouched by the later call and "c" was added
+       * by the later call.
+       *
+       * Also note that because data might be delayed through rate limiting,
+       * custom device states might not be immediately updated in the airconsole
+       * object. Just use RateLimiter.getCustomDeviceState(device_id) instead which
+       * merges the pending data of device states and returns up-to-date data.
+       *
+       * @param airconsole - The AirConsole object
+       * @param airconsole - The constructor configuration.
+       * @constructor
+       */
+      function RateLimiter(airconsole, opts) {
+        opts = opts || {};
+        this.airconsole = airconsole;
+        this.pending = {};
+        this.rate = {};
+        this.timeout = {};
+        this.running_at_limit = {};
+        this.rate_limit = Math.min(opts.rate_limit || 25, 25);
+        this.no_rate_limit_for_first_calls = Math.min(
+            opts.no_rate_limit_for_first_calls || 2, 5);
+      }
+
+      /**
+       * This is the rate-limited version of AirConsole.message(device_id, data).
+       * @param device_id
+       * @param data
+       */
+      RateLimiter.prototype.message = function(device_id, data) {
+        var rate_limit_id = device_id;
+        if (device_id == undefined) {
+          rate_limit_id = "";
+        }
+        if (this.pending[rate_limit_id] == undefined) {
+          this.pending[rate_limit_id] = [];
+        }
+        for (var i = 0; i < this.pending[rate_limit_id].length; ++i) {
+          var pending = this.pending[rate_limit_id][i];
+          if (pending.action == "message" && pending.device_id == device_id) {
+            this.mergeData_(data, pending.data);
+            this.send_(rate_limit_id);
+            return;
+          }
+        }
+        this.pending[rate_limit_id].push({
+          action: "message",
+          device_id: device_id,
+          data: data
+        });
+        this.send_(rate_limit_id);
+      }
+
+      /**
+       * Rate-limited version of AirConsole.broadcast(device_id).
+       * @param data
+       */
+      RateLimiter.prototype.broadcast = function(data) {
+        this.message(undefined, data);
+      }
+
+      /**
+       * Rate-limited version of AirConsole.setCustomDeviceState(data).
+       * @param data
+       */
+      RateLimiter.prototype.setCustomDeviceState = function(data) {
+        this.setCustomDeviceState_(data, true);
+      }
+
+      /**
+       * Rate-limited version of AirConsole.setCustomDeviceStateProperty(key, value).
+       * @param data
+       */
+      RateLimiter.prototype.setCustomDeviceStateProperty = function(key, value) {
+        var data = {};
+        data[key] = value;
+        this.setCustomDeviceState_(data);
+      }
+
+      /**
+       * Returns the up-to-date Custom Device State of a device, even if the data
+       * was not yet sent. Equivalent to AirConsole.getCustomDeviceState(device_id)
+       * without rate-limiting.
+       * @param device_id
+       * @returns {*}
+       */
+      RateLimiter.prototype.getCustomDeviceState = function(device_id) {
+        var me = this;
+        if ((device_id == undefined || device_id == me.airconsole.getDeviceId()) &&
+            this.pending[""]) {
+          for (var i = 0; i < this.pending[""].length; ++i) {
+            var pending = this.pending[""][i];
+            if (pending.action == "custom") {
+              if (pending.clear) {
+                return pending.data;
+              }
+              var copy = {};
+              var existing = me.airconsole.getCustomDeviceState();
+              if (existing) {
+                this.mergeData_(existing, copy);
+              }
+              this.mergeData_(pending.data, copy);
+              return copy;
+            }
+          }
+        }
+        return me.airconsole.getCustomDeviceState(device_id);
+      }
+
+      // ---------------------- ONLY PRIVATE FUNCTIONS BELLOW ----------------------
+
+      /**
+       * @param data
+       * @param clear
+       * @private
+       */
+      RateLimiter.prototype.setCustomDeviceState_ = function(data, clear) {
+        if (this.pending[""] == undefined) {
+          this.pending[""] = [];
+        }
+        for (var i = 0; i < this.pending[""].length; ++i) {
+          var pending = this.pending[""][i];
+          if (pending.action == "custom") {
+            if (clear) {
+              pending.data = data;
+              pending.clear = true;
+            } else {
+              this.mergeData_(data, pending.data);
+            }
+            this.send_("");
+            return;
+          }
+        }
+        this.pending[""].push({
+          action: "custom",
+          data: data,
+          clear: clear
+        });
+        this.send_("");
+      }
+
+      /**
+       * @param add
+       * @param data
+       * @private
+       */
+      RateLimiter.prototype.mergeData_ = function(add, data) {
+        for (var key in add) {
+          if (add.hasOwnProperty(key)) {
+            data[key] = add[key];
+          }
+        }
+      }
+
+      /**
+       * @private
+       */
+      RateLimiter.prototype.send_ = function(rate_limit_id) {
+        var me = this;
+        if (!me.pending[rate_limit_id] ||
+            !me.pending[rate_limit_id].length ||
+            me.timeout[rate_limit_id]) {
+          return;
+        }
+        if (!me.rate[rate_limit_id]) {
+          me.rate[rate_limit_id] = [];
+        }
+        var now = new Date().getTime();
+        while(me.rate[rate_limit_id].length &&
+              me.rate[rate_limit_id][0] < now - 1000) {
+          me.rate[rate_limit_id].shift();
+        }
+        var timeout = 0;
+        if (me.rate[rate_limit_id].length >= me.no_rate_limit_for_first_calls) {
+          var delay = 1000 / (me.rate_limit - me.no_rate_limit_for_first_calls);
+          if (me.no_rate_limit_for_first_calls &&
+              me.rate[rate_limit_id].length >= 2 &&
+              me.rate[rate_limit_id][1] - me.rate[rate_limit_id][0] >= delay) {
+            me.running_at_limit[rate_limit_id] = true;
+          }
+          if (me.running_at_limit[rate_limit_id]) {
+            delay = 1000 / me.rate_limit;
+          }
+          timeout = delay - Math.min(
+              delay,
+              now - me.rate[rate_limit_id][me.rate[rate_limit_id].length-1]);
+        } else {
+          me.running_at_limit[rate_limit_id] = false;
+        }
+        me.timeout[rate_limit_id] = window.setTimeout(function() {
+          me.timeout[rate_limit_id] = undefined;
+          me.rate[rate_limit_id].push(new Date().getTime());
+          var pending = me.pending[rate_limit_id].shift();
+          if (pending.action == "message") {
+            me.airconsole.message(pending.device_id, pending.data);
+          } else if (pending.action == "custom") {
+            var data = pending.data;
+            if (!pending.clear) {
+              data = me.airconsole.getCustomDeviceState();
+              if (!data) {
+                data = pending.data;
+              } else {
+                me.mergeData_(pending.data, data);
+              }
+            }
+            me.airconsole.setCustomDeviceState(data);
+          }
+        }, timeout);
+      }
+
+      </script>
+  </head>
+  <body onload="window.app = new App()">
+    <!-- Add your HTML elements here -->
+    <div class="example-container">
+      <div id="joystick_left" class="joystick">
+        <div class="joystick-relative">
+          <div class="joystick-relative-stick"></div>
+        </div>
+      </div>
+      <div id="joystick_right" class="joystick">
+        <div class="joystick-relative">
+          <div class="joystick-relative-stick"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
